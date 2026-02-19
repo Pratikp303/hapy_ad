@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy 21st Birthday Aditya! 🍻🎉</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Fredoka+One&family=Comic+Neue:wght@700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Comic Neue', cursive;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #ffd89b 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            animation: bgShift 10s ease infinite;
+        }
+        
+        @keyframes bgShift {
+            0%, 100% { filter: hue-rotate(0deg); }
+            50% { filter: hue-rotate(30deg); }
+        }
+        
+        #canvas-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .main-content {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .birthday-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 30px;
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3), 0 0 0 10px rgba(255,255,255,0.1);
+            transform: perspective(1000px) rotateX(5deg);
+            animation: float 3s ease-in-out infinite, wobble 2s ease-in-out infinite;
+            border: 5px solid #ffd700;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .birthday-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(255,215,0,0.1) 10px,
+                rgba(255,215,0,0.1) 20px
+            );
+            animation: shine 20s linear infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: perspective(1000px) rotateX(5deg) translateY(0px); }
+            50% { transform: perspective(1000px) rotateX(5deg) translateY(-20px); }
+        }
+        
+        @keyframes wobble {
+            0%, 100% { transform: perspective(1000px) rotateX(5deg) rotateY(-2deg); }
+            50% { transform: perspective(1000px) rotateX(5deg) rotateY(2deg); }
+        }
+        
+        @keyframes shine {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        
+        h1 {
+            font-family: 'Bangers', cursive;
+            font-size: 3.5rem;
+            background: linear-gradient(45deg, #ff006e, #8338ec, #3a86ff, #06ffa5, #ffbe0b);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradient 3s ease infinite, shake 0.5s ease-in-out infinite;
+            text-shadow: 3px 3px 0px rgba(0,0,0,0.1);
+            margin-bottom: 10px;
+            letter-spacing: 3px;
+        }
+        
+        @keyframes gradient {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateX(0) rotate(0deg); }
+            25% { transform: translateX(-2px) rotate(-1deg); }
+            75% { transform: translateX(2px) rotate(1deg); }
+        }
+        
+        .twenty-one-badge {
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            color: #333;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-family: 'Bangers', cursive;
+            font-size: 2rem;
+            display: inline-block;
+            margin: 10px 0;
+            box-shadow: 0 5px 20px rgba(255,215,0,0.5);
+            animation: pulse 1s ease-in-out infinite;
+            border: 3px solid #fff;
+            text-shadow: 1px 1px 0 rgba(0,0,0,0.1);
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .name-display {
+            font-family: 'Fredoka One', cursive;
+            font-size: 5rem;
+            color: #ff006e;
+            text-shadow: 
+                4px 4px 0px #8338ec,
+                8px 8px 0px #3a86ff,
+                12px 12px 0px rgba(0,0,0,0.2);
+            margin: 10px 0;
+            animation: bounce 1s ease infinite, colorPulse 2s ease infinite;
+            display: inline-block;
+            transform-origin: center;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: scale(1) translateY(0); }
+            50% { transform: scale(1.1) translateY(-10px); }
+        }
+        
+        @keyframes colorPulse {
+            0%, 100% { filter: hue-rotate(0deg); }
+            50% { filter: hue-rotate(60deg); }
+        }
+        
+        .legal-warning {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a6f);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            margin: 15px 0;
+            font-weight: bold;
+            animation: flash 2s ease-in-out infinite;
+            border: 2px dashed #fff;
+        }
+        
+        @keyframes flash {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+        
+        .message {
+            font-size: 1.3rem;
+            color: #444;
+            line-height: 1.6;
+            margin: 20px 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #fff5f5 0%, #fff0f5 100%);
+            border-radius: 20px;
+            border-left: 5px solid #ff006e;
+            font-style: italic;
+            position: relative;
+        }
+        
+        .message::after {
+            content: '💭';
+            position: absolute;
+            top: -10px;
+            right: 10px;
+            font-size: 2rem;
+            animation: float 2s ease-in-out infinite;
+        }
+        
+        .fun-facts {
+            background: #f0f8ff;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            border: 3px dashed #3a86ff;
+        }
+        
+        .fun-facts h3 {
+            color: #8338ec;
+            margin-bottom: 10px;
+            font-family: 'Bangers', cursive;
+            font-size: 1.5rem;
+        }
+        
+        .fact-list {
+            list-style: none;
+            text-align: left;
+        }
+        
+        .fact-list li {
+            padding: 8px 0;
+            padding-left: 30px;
+            position: relative;
+            font-size: 1.1rem;
+            color: #555;
+            transition: transform 0.3s;
+        }
+        
+        .fact-list li:hover {
+            transform: translateX(10px);
+            color: #ff006e;
+        }
+        
+        .fact-list li::before {
+            content: '✨';
+            position: absolute;
+            left: 0;
+            animation: sparkle 1s ease-in-out infinite;
+        }
+        
+        @keyframes sparkle {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+        
+        .button-container {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        
+        .btn {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            font-family: 'Comic Neue', cursive;
+            font-weight: bold;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(45deg, #ff006e, #8338ec);
+            color: white;
+            box-shadow: 0 5px 20px rgba(255,0,110,0.4);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 30px rgba(255,0,110,0.6);
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(45deg, #06ffa5, #3a86ff);
+            color: white;
+            box-shadow: 0 5px 20px rgba(6,255,165,0.4);
+        }
+        
+        .btn-secondary:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 30px rgba(6,255,165,0.6);
+        }
+        
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+        
+        .btn:active::after {
+            width: 300px;
+            height: 300px;
+        }
+        
+        .cake-container {
+            font-size: 6rem;
+            margin: 20px 0;
+            cursor: pointer;
+            display: inline-block;
+            transition: transform 0.3s;
+            position: relative;
+        }
+        
+        .cake-container:hover {
+            transform: scale(1.2) rotate(10deg);
+        }
+        
+        .cake-container:active {
+            transform: scale(0.9);
+        }
+        
+        .candle-flame {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2rem;
+            animation: flicker 0.5s ease-in-out infinite alternate;
+        }
+        
+        @keyframes flicker {
+            0% { transform: translateX(-50%) scale(1) rotate(-5deg); opacity: 1; }
+            100% { transform: translateX(-50%) scale(1.2) rotate(5deg); opacity: 0.8; }
+        }
+        
+        .roast-section {
+            margin-top: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 100%);
+            border-radius: 20px;
+            border: 3px solid #e17055;
+            display: none;
+            animation: slideIn 0.5s ease;
+        }
+        
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .roast-section h3 {
+            color: #d63031;
+            font-family: 'Bangers', cursive;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+        
+        .roast-text {
+            font-size: 1.2rem;
+            color: #2d3436;
+            line-height: 1.6;
+        }
+        
+        .emoji-rain {
+            position: fixed;
+            font-size: 2rem;
+            pointer-events: none;
+            z-index: 100;
+            animation: fall linear;
+        }
+        
+        @keyframes fall {
+            to { transform: translateY(100vh) rotate(360deg); }
+        }
+        
+        .floating-emoji {
+            position: absolute;
+            font-size: 3rem;
+            animation: floatAround 10s ease-in-out infinite;
+            opacity: 0.3;
+            z-index: 0;
+        }
+        
+        @keyframes floatAround {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(100px, -100px) rotate(90deg); }
+            50% { transform: translate(0, -200px) rotate(180deg); }
+            75% { transform: translate(-100px, -100px) rotate(270deg); }
+        }
+        
+        .achievement {
+            background: gold;
+            color: #333;
+            padding: 10px 20px;
+            border-radius: 50px;
+            display: inline-block;
+            margin: 5px;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            animation: pulse 2s ease-in-out infinite;
+            font-size: 0.9rem;
+        }
+        
+        .id-card {
+            background: linear-gradient(135deg, #74b9ff, #0984e3);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            border: 3px solid #fff;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .id-card::before {
+            content: '🔞';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 2rem;
+            opacity: 0.3;
+        }
+        
+        .id-card h3 {
+            font-family: 'Bangers', cursive;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .id-details {
+            text-align: left;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+        
+        .id-details strong {
+            color: #ffeaa7;
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 2.5rem; }
+            .name-display { font-size: 3rem; }
+            .birthday-card { padding: 20px; }
+            .twenty-one-badge { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas-container"></canvas>
+    
+    <!-- Floating Background Emojis -->
+    <div class="floating-emoji" style="top: 10%; left: 10%; animation-delay: 0s;">🎈</div>
+    <div class="floating-emoji" style="top: 20%; right: 15%; animation-delay: 2s;">🎁</div>
+    <div class="floating-emoji" style="top: 60%; left: 5%; animation-delay: 4s;">🍻</div>
+    <div class="floating-emoji" style="top: 70%; right: 10%; animation-delay: 6s;">🍰</div>
+    <div class="floating-emoji" style="top: 40%; left: 90%; animation-delay: 8s;">🥳</div>
+    <div class="floating-emoji" style="top: 30%; left: 50%; animation-delay: 5s;">🪪</div>
+    
+    <div class="main-content">
+        <div class="birthday-card">
+            <h1>HAPPY 21st BIRTHDAY</h1>
+            
+            <div class="twenty-one-badge">🎉 OFFICIALLY 21 🎉</div>
+            
+            <div class="name-display">ADITYA!</div>
+            
+            <div class="legal-warning">
+                ⚠️ WARNING: Now legally able to do all the things he's been doing since 18 ⚠️
+            </div>
+            
+            <div class="cake-container" onclick="blowCandle()" title="Click to blow the candle!">
+                🎂2️⃣1️⃣
+                <span class="candle-flame" id="flame">🔥</span>
+            </div>
+            
+            <div class="achievement">🏆 Level 21 Unlocked</div>
+            <div class="achievement">🍻 Legal Everywhere (Almost)</div>
+            <div class="achievement">🎮 Adulting Difficulty: Hard</div>
+            
+            <div class="id-card">
+                <h3>🪪 Official Adult License</h3>
+                <div class="id-details">
+                    <strong>Name:</strong> Aditya<br>
+                    <strong>Age:</strong> 21 (Finally!)<br>
+                    <strong>Status:</strong> Professional Adult (In Training)<br>
+                    <strong>Expires:</strong> When the hangover ends<br>
+                    <strong>ID:</strong> #21ANDFABULOUS
+                </div>
+            </div>
+            
+            <div class="message">
+                "Welcome to 21! The age where you can finally rent a car, buy a drink, and still have no idea what you're doing with your life. 
+                Cheers to being old enough to know better but young enough to do it anyway!"
+            </div>
+            
+            <div class="fun-facts">
+                <h3>🎮 Aditya's 21st Level Stats:</h3>
+                <ul class="fact-list">
+                    <li>Can now legally enter bars without the 'fake ID panic sweat'</li>
+                    <li>Unlocks: Casino access (RIP savings account)</li>
+                    <li>Still can't rent a car without extra fees (plot twist!)</li>
+                    <li>Brain officially stops developing (use it wisely!)</li>
+                    <li>Now eligible for 'quarter-life crisis' DLC</li>
+                    <li>Can order wine without pretending to look at the menu</li>
+                </ul>
+            </div>
+            
+            <div class="button-container">
+                <button class="btn btn-primary" onclick="launchConfetti()">🎊 Launch Confetti</button>
+                <button class="btn btn-secondary" onclick="toggleRoast()">😂 21st Roasts</button>
+                <button class="btn btn-primary" onclick="startEmojiRain()">🍻 Drink Emoji Rain</button>
+            </div>
+            
+            <div class="roast-section" id="roastSection">
+                <h3>🔥 21st Birthday Roasts 🔥</h3>
+                <div class="roast-text" id="roastText">
+                    Loading roast... (Don't worry, it's all love! ❤️)
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Canvas Confetti Setup
+        const canvas = document.getElementById('canvas-container');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        
+        let particles = [];
+        let animationId;
+        
+        class Particle {
+            constructor(x, y, type = 'confetti') {
+                this.x = x;
+                this.y = y;
+                this.size = Math.random() * 10 + 5;
+                this.speedX = Math.random() * 6 - 3;
+                this.speedY = Math.random() * -15 - 5;
+                this.gravity = 0.4;
+                this.rotation = Math.random() * 360;
+                this.rotationSpeed = Math.random() * 10 - 5;
+                this.color = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                this.type = type;
+                this.life = 1;
+                this.decay = Math.random() * 0.01 + 0.005;
+            }
+            
+            update() {
+                this.speedY += this.gravity;
+                this.x += this.speedX;
+                this.y += this.speedY;
+                this.rotation += this.rotationSpeed;
+                this.life -= this.decay;
+                
+                if (this.y > canvas.height) {
+                    this.speedY *= -0.6;
+                    this.y = canvas.height;
+                }
+            }
+            
+            draw() {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate((this.rotation * Math.PI) / 180);
+                ctx.globalAlpha = this.life;
+                
+                if (this.type === 'emoji') {
+                    ctx.font = `${this.size * 2}px Arial`;
+                    ctx.fillText(['🎉', '🎈', '🎁', '✨', '🌟', '🍻', '🥂', '🍾'][Math.floor(Math.random() * 8)], 0, 0);
+                } else {
+                    ctx.fillStyle = this.color;
+                    ctx.fillRect(-this.size/2, -this.size/2, this.size, this.size);
+                }
+                
+                ctx.restore();
+            }
+        }
+        
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            particles = particles.filter(p => p.life > 0);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            
+            if (particles.length > 0) {
+                animationId = requestAnimationFrame(animate);
+            }
+        }
+        
+        function launchConfetti() {
+            // Burst from center
+            for (let i = 0; i < 100; i++) {
+                particles.push(new Particle(canvas.width/2, canvas.height/2));
+            }
+            
+            // Burst from corners
+            setTimeout(() => {
+                for (let i = 0; i < 50; i++) {
+                    particles.push(new Particle(0, 0));
+                    particles.push(new Particle(canvas.width, 0));
+                }
+            }, 200);
+            
+            if (particles.length <= 100) animate();
+            
+            // Play celebration sound effect (visual feedback)
+            document.body.style.animation = 'none';
+            setTimeout(() => {
+                document.body.style.animation = 'bgShift 10s ease infinite';
+            }, 100);
+        }
+        
+        function startEmojiRain() {
+            const emojis = ['🍻', '🥂', '🍾', '🍷', '🍸', '🍹', '🧊', '🍋', '🎉', '🥳'];
+            
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const emoji = document.createElement('div');
+                    emoji.className = 'emoji-rain';
+                    emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                    emoji.style.left = Math.random() * 100 + '%';
+                    emoji.style.top = '-50px';
+                    emoji.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                    document.body.appendChild(emoji);
+                    
+                    setTimeout(() => emoji.remove(), 5000);
+                }, i * 100);
+            }
+        }
+        
+        function blowCandle() {
+            const flame = document.getElementById('flame');
+            if (flame.style.display === 'none') {
+                flame.style.display = 'block';
+                flame.textContent = '🔥';
+            } else {
+                flame.style.display = 'none';
+                launchConfetti();
+                
+                // Create smoke effect
+                for (let i = 0; i < 20; i++) {
+                    setTimeout(() => {
+                        const smoke = document.createElement('div');
+                        smoke.textContent = '💨';
+                        smoke.style.position = 'absolute';
+                        smoke.style.fontSize = '2rem';
+                        smoke.style.left = '50%';
+                        smoke.style.top = '40%';
+                        smoke.style.transform = 'translate(-50%, -50%)';
+                        smoke.style.pointerEvents = 'none';
+                        smoke.style.animation = 'float 2s ease-out forwards';
+                        smoke.style.opacity = '0.5';
+                        document.querySelector('.cake-container').appendChild(smoke);
+                        setTimeout(() => smoke.remove(), 2000);
+                    }, i * 50);
+                }
+            }
+        }
+        
+        const roasts = [
+            "Aditya is 21 now! He's officially at that age where he can legally do everything he's been doing illegally for 3 years! 🍻",
+            "Happy 21st! You're now old enough to know better, but still young enough to blame it on being 'just a kid' for one more year!",
+            "21 years old: When you realize you can now buy alcohol but can't afford it because you're still broke from being 20.",
+            "Aditya is 21! That's 7,665 days of not knowing what he's doing, but now he can drink while doing it!",
+            "Welcome to 21! The age where your hangovers last longer than your relationships.",
+            "21: The magical age where you're expected to have your life together but still call your mom when you get a paper cut.",
+            "Happy Birthday Aditya! You're now at the age where 'partying all night' means staying up past 11 PM.",
+            "21 years old and still using the oven to store extra pots and pans. Adulting level: Expert!",
+            "Congratulations! You've reached the age where you get excited about vacuum cleaners and nap schedules.",
+            "Aditya is 21 now, which means he has exactly 9 years left to become a millionaire or explain to his parents why he's not a doctor yet!"
+        ];
+        
+        function toggleRoast() {
+            const roastSection = document.getElementById('roastSection');
+            const roastText = document.getElementById('roastText');
+            
+            if (roastSection.style.display === 'none' || roastSection.style.display === '') {
+                roastText.textContent = roasts[Math.floor(Math.random() * roasts.length)];
+                roastSection.style.display = 'block';
+            } else {
+                roastSection.style.display = 'none';
+            }
+        }
+        
+        // Auto-launch some confetti on load
+        window.onload = () => {
+            setTimeout(launchConfetti, 500);
+        };
+        
+        // Handle resize
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+        
+        // Click anywhere for surprise confetti
+        document.addEventListener('click', (e) => {
+            if (e.target.tagName !== 'BUTTON' && !e.target.closest('.cake-container')) {
+                for (let i = 0; i < 10; i++) {
+                    particles.push(new Particle(e.clientX, e.clientY));
+                }
+                if (particles.length <= 10) animate();
+            }
+        });
+    </script>
+</body>
+</html>
